@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: sales-pos-system
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
+      - key: UPLOAD_DIR
+        value: /opt/render/project/src/uploads
+    # Free tier has no persistent disk. For real production use, upgrade to a paid plan
+    # and add a persistent disk mounted at /opt/render/project/src/data
